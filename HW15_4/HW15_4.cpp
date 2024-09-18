@@ -13,17 +13,30 @@ int getValue()
     return a;
 }
 
-void printOddNumbers(int a)
+int getValueOdd() 
 {
-    cout << "Find Odd numbers: "<< "\n";
-    for (int count = 0; count < a+1; count +=2)
+
+    int b = 3;
+    while (b > 1 or b<0)
+    {
+        cout << "If you wont odd number, enter 0, else 1: ";
+        cin >> b;
+    }
+    return b;
+}
+
+void printOddNumbers(int a, int b)
+{
+    cout << "Find numbers: "<< "\n";
+    int count;
+    for ( count = b; count < a+1; count +=2)
     cout << count << "\n";
 }
 int main()
 {
     int a = getValue();
-    printOddNumbers(a);
-
+    int b = getValueOdd();
+    printOddNumbers(a, b);
     
     
 }
