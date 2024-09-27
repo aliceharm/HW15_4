@@ -2,41 +2,47 @@
 //
 
 #include <iostream>
+#include <iomanip>
+#include <ctime>
 
 using namespace std;
 
-int getValue()
-{
-    cout << "enter your number: ";
-    int a;
-    cin >> a;
-    return a;
-}
 
-int getValueOdd() 
-{
 
-    int b = 3;
-    while (b > 1 or b<0)
-    {
-        cout << "If you wont odd number, enter 0, else 1: ";
-        cin >> b;
-    }
-    return b;
-}
 
-void printOddNumbers(int a, int b)
-{
-    cout << "Find numbers: "<< "\n";
-    int count;
-    for ( count = b; count < a+1; count +=2)
-    cout << count << "\n";
-}
 int main()
 {
-    int a = getValue();
-    int b = getValueOdd();
-    printOddNumbers(a, b);
+    
+    int i, j, m, n;
+    cout << "Enter num of rows : "; cin >> m;
+    cout << "Enter num of cols : "; cin >> n;
+
+    
+    int** arr = new int* [m]; // использую указатель, что бы выделить память под массив указателей
+    // а имея доступ к этому массиву указателей, получим доступ к массивам чисел. и потом освободить всю выделенную память.
+    for (i = 0; i < m; i++)
+    {
+       
+        arr[i] = new int[n];
+        for (j = 0; j < n; j++)
+            cout << setfill(' ') << setw(2) << (arr[i][j] = i + j) << " ";
+        cout << "\n";
+    }
+    int sum = 0; 
+    struct tm buf;
+    time_t t = time(NULL);
+    localtime_s(&buf, &t); 
+
+    for (int x = 0; x < n; x++)
+    {
+        sum += arr[buf.tm_mday % n][x];
+    }
+    cout << sum << endl;
+
+        
+        
+
+    
     
     
 }
